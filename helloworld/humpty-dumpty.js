@@ -7,6 +7,6 @@ var lines = [
     'Couldn\'t put Humpty together again.'
 ];
 
-for (var i = 0; i < 4 ; i++){
+for (var i = 0; i < 4; i++) {
     console.log(lines[i]);
 }
