@@ -16,6 +16,8 @@ if (args.length === 3) {
         case '/':
             console.log(+ args[1] / + args[2]);
             break;
+            default:
+        console.log("I do not know this operation.")
     }
 } else {
     console.log('Not the right number of input parameters.')
