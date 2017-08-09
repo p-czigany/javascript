@@ -1,8 +1,15 @@
 'use strict';
 
-var shop_items = ["Cupcake", 2, "Brownie", false]
+var shop_items = ["Cupcake", 2, "Brownie", false];
 
-shop_items[shop_items.indexOf(2)] = 'Croissant';
-shop_items[shop_items.indexOf(false)] = 'Ice cream';
+replace(shop_items, 2, 'Croissant');
+replace(shop_items, false, 'Ice cream');
 
 console.log(shop_items);
+
+function replace(array, toReplace, replaceWith) {
+    let index = array.indexOf(toReplace);
+    if (index !== -1) {
+        array[index] = replaceWith;
+    }
+}
