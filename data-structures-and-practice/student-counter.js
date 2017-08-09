@@ -17,4 +17,15 @@ function candyCount(listOfStudents) {
     return candies;
 }
 
+function ageSumOfStudentsWithLessThanFiveCandies(listOfStudents) {
+    var ageSum = 0;
+    for (var student of listOfStudents) {
+        if (student.candies < 5) {
+            ageSum += student.age;
+        }
+    }
+    return ageSum;
+}
+
 console.log(candyCount(students));
+console.log(ageSumOfStudentsWithLessThanFiveCandies(students));
