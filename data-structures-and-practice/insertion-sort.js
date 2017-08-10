@@ -18,19 +18,19 @@ var applicants = [1267, 1968, 1935, 8561, 7775, 4524, 3874, 9759, 6489, 9191,
     8514, 9742, 8795, 7834, 8862, 9826, 7230];
 
 function insertionSort(array) {
-    var i = 1;
-    while (i < array.length) {
-        var j = i;
-        while (j > 0 && array[j - 1] > array[j]) {
-            var swap = array[j];
-            array[j] = array[j - 1];
-            array[j - 1] = swap;
-            j = j - 1;
+    for (let i = 1; i < array.length; i++) {
+        for (let j = i; j > 0; j--) {
+            if (array[j - 1] > array[j]) {
+                const swap = array[j];
+                array[j] = array[j - 1];
+                array[j - 1] = swap;
+            }
         }
-        i = i + 1;
     }
 }
 
-console.log('Before:', applicants[0], applicants[1], applicants[2], '...');
+console.log('Before:', applicants[0], applicants[1], applicants[2],
+    '...', applicants[applicants.length - 2], applicants[applicants.length - 1]);
 insertionSort(applicants);
-console.log('After:', applicants[0], applicants[1], applicants[2], '...');
+console.log('After:', applicants[0], applicants[1], applicants[2],
+    '...', applicants[applicants.length - 2], applicants[applicants.length - 1]);
