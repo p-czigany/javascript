@@ -1,17 +1,4 @@
 'use strict';
-// Create a function that prints the ingredient list of dictionaries to the console in the following format:
-//
-// +--------------------+---------------+----------+
-// | Ingredient         | Needs cooling | In stock |
-// +--------------------+---------------+----------+
-// | vodka              | Yes           | 1        |
-// | coffee_liqueur     | Yes           | -        |
-// | fresh_cream        | Yes           | 1        |
-// | captain_morgan_rum | Yes           | 2        |
-// | mint_leaves        | No            | -        |
-// +--------------------+---------------+----------+
-//
-// The frist columns should be automatically as wide as the longest key
 
 var ingredients = [
     { 'vodka': 1, 'needs_cooling': true },
@@ -24,11 +11,9 @@ var ingredients = [
     { 'soda': 100, 'needs_cooling': true }
 ]
 
-const secondColumnWidth = 15;
-const thirdColumnWidth = 10;
-const firstColumnWidth = firstColumnWidthFunction();
+const columnWidth = [firstColumnWidth(), 15, 10];
 
-function firstColumnWidthFunction() {
+function firstColumnWidth() {
     let maxLength = 10;
     ingredients.forEach(function (element) {
         const currentLength = Object.keys(element)[0].length;
@@ -39,32 +24,43 @@ function firstColumnWidthFunction() {
 
 function print_ingredients() {
     horizontal_line();
-    process.stdout.write('| Ingredient');
-    for (let i = 0; i < firstColumnWidth - 9; i++) {
-        process.stdout.write(' ');
-    }
-    process.stdout.write('| Needs cooling | In stock |\n');
+
+    headline();
+
     horizontal_line();
 
-    ingredients.forEach(function (element) {
-        process.stdout.write('| ' + Object.keys(element)[0]);
-        horizontal_whitespace(firstColumnWidth - (1 + Object.keys(element)[0].length));
-
-        process.stdout.write('| ' + element.needs_cooling);
-        horizontal_whitespace(secondColumnWidth - (1 + element.needs_cooling.length));
-
-        process.stdout.write('| ' + element[Object.keys(element)[0]]);
-        horizontal_whitespace(secondColumnWidth - (1 + element[Object.keys(element)[0]].length));
-        
-        process.stdout.write('\n');
-    });
+    draw_rows();
 
     horizontal_line();
 }
 
+function headline() {
+    process.stdout.write('| Ingredient');
+    horizontal_whitespace(columnWidth[0] - 11);
+    process.stdout.write('| Needs cooling | In stock |\n');
+}
+
+function draw_cell(index, content) {
+    process.stdout.write('| ' + content);
+    horizontal_whitespace(columnWidth[index] - (1 + content.toString().length));
+}
+
+function draw_row(element) {
+    draw_cell(0, Object.keys(element)[0]);
+    draw_cell(1, element.needs_cooling);
+    draw_cell(2, element[Object.keys(element)[0]]);
+    process.stdout.write('|\n');
+}
+
+function draw_rows() {
+    ingredients.forEach(function (element) {
+        draw_row(element);
+    });
+}
+
 function horizontal_line() {
     process.stdout.write('+');
-    for (let i = 0; i < firstColumnWidth; i++) {
+    for (let i = 0; i < columnWidth[0]; i++) {
         process.stdout.write('-');
     }
     process.stdout.write('+---------------+----------+\n');
@@ -76,6 +72,5 @@ function horizontal_whitespace(x) {
     }
 }
 
-console.log(Object.keys(ingredients[0])[0].length);
-console.log(firstColumnWidth);
+console.log(columnWidth);
 print_ingredients();
