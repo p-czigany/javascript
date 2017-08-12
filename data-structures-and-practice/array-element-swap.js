@@ -1,13 +1,14 @@
-'use strict';
+const words = ['What', 'I', 'do', 'create,', 'I', 'cannot', 'not', 'understand.'];
 
-var words = ["What", "I", "do", "create,", "I", "cannot", "not", "understand."];
-function swapArrayElements(array, index1, index2) {
-    if (array.length > index1 && array.length > index2 && index1 >= 0 && index2 >= 0) {
-        var swap = array[index1];
-        array[index1] = array[index2];
-        array[index2] = swap;
-    }
-}
+const swapArrayElements = function swapper(array, index1, index2) {
+  const sorted = array;
+  if (index1 >= 0 && array.length > index1
+          && array.length > index2 && index2 >= 0) {
+    const swap = sorted[index1];
+    sorted[index1] = sorted[index2];
+    sorted[index2] = swap;
+  }
+};
 
 swapArrayElements(words, 2, 5);
 

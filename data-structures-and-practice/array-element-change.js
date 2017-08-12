@@ -1,15 +1,14 @@
-'use strict';
+const shopItems = ['Cupcake', 2, 'Brownie', false];
 
-var shop_items = ["Cupcake", 2, "Brownie", false];
+const replaceArrayElement = function replace(array, toReplace, replaceWith) {
+  const replaced = array;
+  const index = replaced.indexOf(toReplace);
+  if (index !== -1) {
+    replaced[index] = replaceWith;
+  }
+};
 
-replace(shop_items, 2, 'Croissant');
-replace(shop_items, false, 'Ice cream');
+replaceArrayElement(shopItems, 2, 'Croissant');
+replaceArrayElement(shopItems, false, 'Ice cream');
 
-console.log(shop_items);
-
-function replace(array, toReplace, replaceWith) {
-    let index = array.indexOf(toReplace);
-    if (index !== -1) {
-        array[index] = replaceWith;
-    }
-}
+console.log(shopItems);

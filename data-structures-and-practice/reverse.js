@@ -1,13 +1,11 @@
-'use strict';
+const reversed = ".eslaf eb t'ndluow ecnetnes siht ,dehctiws erew eslaf dna eurt fo sgninaem eht fI";
 
-var reversed = ".eslaf eb t'ndluow ecnetnes siht ,dehctiws erew eslaf dna eurt fo sgninaem eht fI";
+const reverseString = function reverseStringFunction() {
+  let reversion = '';
+  for (let i = reversed.length; i > 0; i -= 1) {
+    reversion += reversed.substring(i - 1, i);
+  }
+  return reversion;
+};
 
-console.log(reverseString(reversed));
-
-function reverseString(toReverse) {
-    var reversed = '';
-    for (let i = toReverse.length; i > 0; i--) {
-        reversed += toReverse.substring(i - 1, i);
-    }
-    return reversed;
-}
+console.log(reverseString());
