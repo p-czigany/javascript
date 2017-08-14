@@ -8,12 +8,8 @@ list.removeChild(document.querySelector('li'));
  * ['apple', 'bubble', 'cat', 'green fox']
  */
 const contentList = ['apple', 'bubble', 'cat', 'green fox'];
-const addToList = function addToListFunction() {
-  contentList.forEach((elem) => {
-    const listElement = document.createElement('li');
-    listElement.textContent = elem;
-    list.appendChild(listElement);
-  });
-};
-
-addToList();
+contentList.forEach((elem) => {
+  const listElement = document.createElement('li');
+  listElement.textContent = elem;
+  list.appendChild(listElement);
+});
